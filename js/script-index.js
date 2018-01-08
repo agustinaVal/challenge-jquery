@@ -1,6 +1,7 @@
 $(document).ready( function(){
 $('.js-back').hide();
- newPrints ()
+ newPrints ();
+ renderActivities(activities);
 	//La variable "recipesArray" esta declarada en el archivo "data/recipes.js"
 	renderHighlightedRecipes(recipesArray);
 
@@ -32,35 +33,40 @@ function renderHighlightedRecipes(recipesArray) {
 */
 function renderRecipe(recipe) {
 	for (var i = 0; i < recipesArray.length; i++) {
-	var nombreImg = recipesArray[i].name
-	var titulo = recipesArray[i].title
-	var source =  recipesArray[i].source.name
-	$('.title-message').append('<a class="item-recipe" href="#">'
-    +'<span class="attribution">'
-    +'<span class="title-recipe">'+ titulo +' </span>'
-    +'<span class="metadata-recipe">'
-    +'<span class="author-recipe">'
-    + source + ' </span>'
-    +'<span class="bookmarks-recipe">'
-    +'<span class="icon-bookmark"></span>' 
-    +'</span>'
-    +'</span>'
-    +'</span>'
-    +'<img src="img/recipes/320x350/' + nombreImg + '.jpg" />'
-    +'</a>'
-    )
-  }console.log('Voy a pintar la receta: ', recipe);
-}	
-
-
-
-
+		var nameImg = recipesArray[i].name;
+		var title = recipesArray[i].title;
+		var autor = recipesArray[i].source.name;
+		$('.list-recipes').append('<a class="item-recipe" href="#">'
+		+ '<span class="attribution">'
+		+ '<span class="title-recipe">'+ title +'</span>'
+		+ '<span class="metadata-recipe">'
+		+ '<span class="author-recipe">'+ autor + '</span>'
+		+ '<span class="bookmarks-recipe">'
+		+ '<span class="icon-bookmark"></span>'
+		+ '</span>'
+		+ '</span>'
+		+ '</span>'
+		+'<img src="img/recipes/320x350/' + nameImg +'.jpg" />'
+		+ '</a>'
+)
+	}
+	
+	console.log('Voy a pintar la receta: ', recipe);
+	
+};
 /*
 * Función que se encarga de pintar todas las actividades
 */
-function renderActivities(activitiesArray) {
-	console.log('Activities: ', activitiesArray);
-}
+
+var renderActivities = (function(activitiesArray) {
+  for (var i = 0; i < activitiesArray.length; i++) {
+    renderActivity(activitiesArray[i]);
+  }
+  if (activitiesArray.length > 0) {
+    $(".wrapper-message").remove();
+  }
+  console.log('Activities: ', activitiesArray);
+});
 
 /*
 * Función que se encarga de pintar una actividad
@@ -68,7 +74,22 @@ function renderActivities(activitiesArray) {
 * archivo "templates/templates-activity.html"
 */
 function renderActivity(recipe) {
-	
+	$('.list-recipes').append('<a href="#" class="item-activity">'
+    +'<span class="attribution">'
+    +'<span class="avatar">'
+    +'<img src="' + recipe.userAvatar + '" class="image-avatar">'
+    +'</span>'
+    +'<span class="meta">'
+    +'<span class="author">' + recipe.userName
+    + '</span> made '
+    +'<span class="recipe">' + recipe.recipeName 
+    +'</span>:' + recipe.text 
+    +'<span class="location">' + recipe.place
+    +'</span></span>'
+    +'</span>'
+    +'<div class="bg-image" style="background-image: url(' + recipe.image + ');">'
+    + '</div></a>'
+    )console.log(recipe);
 }
 
 
