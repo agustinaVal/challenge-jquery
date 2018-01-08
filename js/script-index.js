@@ -1,9 +1,14 @@
 $(document).ready( function(){
-
+$('.js-back').hide();
+ newPrints ()
 	//La variable "recipesArray" esta declarada en el archivo "data/recipes.js"
 	renderHighlightedRecipes(recipesArray);
 
 });
+
+function newPrints (){
+	$('.callout-news p').append('Nuevas recetas');
+}
 
 
 /*
@@ -12,6 +17,11 @@ $(document).ready( function(){
 */
 function renderHighlightedRecipes(recipesArray) {
 	console.log('Recipes: ', recipesArray);
+	for (var i = 0;i < recipesArray.length; i++){
+		if (recipesArray[i].highlighted == true) {
+			renderRecipe(recipesArray[i]);
+		}
+	}
 }
 
 /*
