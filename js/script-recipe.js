@@ -4,3 +4,14 @@ $('.js-menu').hide();
 	renderHighlightedRecipes(recipesArray);
 
 });
+  $(".js-show-make").click(function() {
+  $("#drop").addClass("make");
+  $(".js-show-make").addClass("active");
+  $(".js-show-recipe").removeClass("active");
+  });
+
+  $(".js-show-recipe").click(function() {
+  $("#drop").removeClass("make");
+  $(".js-show-make").removeClass("active");
+  $(".js-show-recipe").addClass("active");
+});

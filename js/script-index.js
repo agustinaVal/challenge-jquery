@@ -1,4 +1,4 @@
-$(document).ready( function(){
+$(document).ready( function(){	
 $('.js-back').hide();
  newPrints ();
  renderActivities(activities);
